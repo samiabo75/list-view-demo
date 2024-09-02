@@ -13,10 +13,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity  {
 
     ListView listView;
-    String[] listTopics = {"Android","Java","Kotlin","Javascript","Python"};
+//    String[] listTopics = {"Android","Java","Kotlin","Javascript","Python"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,14 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
 
         listView = findViewById(R.id.listView);  // חיפוש וקישור הרכיב ListView לקוד ה-Java.
+
+        ArrayList<String> listTopics = new ArrayList<>();
+        listTopics.add("Android");
+        listTopics.add("Java");
+        listTopics.add("Kotlin");
+        listTopics.add("Javascript");
+        listTopics.add("Python");
+
 
         ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_dropdown_item_1line, listTopics);
         // יצירת מתאם לטיפול בנתונים של הרשימה.
@@ -35,7 +46,7 @@ public class MainActivity extends AppCompatActivity  {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int index, long l) {
-                Toast.makeText(MainActivity.this, "You have clicked on " + listTopics[index], Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "You have clicked on " + listTopics.get(index), Toast.LENGTH_SHORT).show();
             }
         });
    }
